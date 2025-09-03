@@ -9,12 +9,12 @@ pipeline {
             steps {
                 script {
                   echo "Building the Docker image..."
-                  sh 'docker build -t ${IMAGE_NAME}:${JOB_NAME}-${BUILD_NUMBER} . '
+                  sh 'docker build -t ${IMAGE_NAME}:1.0 . '
                     
                 }
             }
         }
-        stage('Build and Push Docker Image') {
+        stage('Push Docker Image') {
             steps {
                 script {
                     
