@@ -21,7 +21,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: env.DOCKER_HUB_CREDENTIALS, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh """
                         echo "${PASSWORD}" | docker login -u "${USERNAME}" --password-stdin
-                        docker push ${IMAGE_NAME}:${JOB_NAME}-${BUILD_NUMBER}
+                        docker push ${IMAGE_NAME}:1.0
                         """
                     }
                 }
