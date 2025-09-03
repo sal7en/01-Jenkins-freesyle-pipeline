@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub')
-        IMAGE_NAME = "mahmoudaboelsalhen/Level3-q6"
+        IMAGE_NAME = "mahmoudaboelsalhen/level3-q6"
     }
     stages {
         stage('Build Docker Image') {
