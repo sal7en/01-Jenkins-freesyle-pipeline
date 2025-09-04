@@ -8,8 +8,10 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                  echo "Building the Docker image..."
-                  sh 'docker build -t ${IMAGE_NAME}:1.0 . '
+                  echo "Building the Docker image"
+                  sh """
+                    docker build -t ${IMAGE_NAME}:${JOB_NAME}-${BUILD_NUMBER} .
+                    """
                     
                 }
             }
@@ -21,7 +23,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: env.DOCKER_HUB_CREDENTIALS, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh """
                         echo "${PASSWORD}" | docker login -u "${USERNAME}" --password-stdin
-                        docker push ${IMAGE_NAME}:1.0
+                        docker push ${IMAGE_NAME}:${JOB_NAME}-${BUILD_NUMBER}
                         """
                     }
                 }
