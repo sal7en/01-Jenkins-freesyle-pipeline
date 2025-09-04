@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-        DOCKER_HUB_CREDENTIALS = credentials('docker-hub')
         IMAGE_NAME = "mahmoudaboelsalhen/level3-q6"
     }
     stages {
@@ -20,7 +19,7 @@ pipeline {
             steps {
                 script {
                     
-                    withCredentials([usernamePassword(credentialsId: env.DOCKER_HUB_CREDENTIALS, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh """
                         echo "${PASSWORD}" | docker login -u "${USERNAME}" --password-stdin
                         docker push ${IMAGE_NAME}:${JOB_NAME}-${BUILD_NUMBER}
