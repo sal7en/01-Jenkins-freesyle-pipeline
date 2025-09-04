@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = "mahmoudaboelsalhen/level3-q6"
+        IMAGE_NAME = "mahmoudaboelsahen/level3-q6"
     }
     stages {
         stage('Build Docker Image') {
