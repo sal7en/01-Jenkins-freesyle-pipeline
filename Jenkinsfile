@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+    tools {
+        maven 'M399' 
+    }
+    
     environment {
         IMAGE_NAME = "mahmoudaboelsahen/level5-q12"
     }
