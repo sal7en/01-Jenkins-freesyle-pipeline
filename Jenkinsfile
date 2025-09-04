@@ -1,9 +1,23 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = "mahmoudaboelsahen/level3-q6"
+        IMAGE_NAME = "mahmoudaboelsahen/level5-q12"
     }
     stages {
+
+        stage('Build using Maven'){
+            steps{
+                //clean then create the package
+                sh 'mvn clean package'
+            }
+        }
+        
+        stage('Testing'){
+            steps{
+                sh 'mvn test'
+            }
+        }
+        
         stage('Build Docker Image') {
             steps {
                 script {
